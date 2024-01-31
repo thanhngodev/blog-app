@@ -259,16 +259,18 @@ const DashProfile = () => {
           {updateUserSuccess}
         </Alert>
       )}
-      {updateUserError && (
-        <Alert color='failure' className='mt-5'>
-          {updateUserError}
-        </Alert>
-      )}
-      {error && (
-        <Alert color='failure' className='mt-5'>
-          {error}
-        </Alert>
-      )}
+      {
+        error ? (
+          <Alert color='failure' className='mt-5'>
+            {error}
+          </Alert>
+        ) : (
+          updateUserError && (
+            <Alert color='failure' className='mt-5'>
+              {updateUserError}
+            </Alert>
+          ))
+      }
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}

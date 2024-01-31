@@ -92,6 +92,7 @@ const DashSidebar = () => {
                   <Link to={`/dashboard?tab=${tabItem.tab}`} key={index}>
                     <Sidebar.Item
                       active={tab === tabItem.tab || !tab}
+                      label={tabItem.tab === 'profile' && (currentUser.isAdmin ? 'Admin' : 'User' )}
                       icon={tabItem.icon}
                       as='div'
                     >

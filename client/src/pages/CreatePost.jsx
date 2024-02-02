@@ -14,7 +14,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const CreatePost = ({ postId = null }) => {
+const CreatePost = () => {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
@@ -22,29 +22,6 @@ const CreatePost = ({ postId = null }) => {
   const [publishError, setPublishError] = useState(null);
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (postId) {
-      try {
-        const fetchPost = async () => {
-          const res = await fetch(`/api/post/getposts?postId=${postId}`);
-          const data = await res.json();
-          if (!res.ok) {
-            setPublishError(data.message);
-            return;
-          }
-          if (res.ok) {
-            setPublishError(null);
-            setFormData(data.posts[0]);
-          }
-        };
-
-        fetchPost();
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-  }, [postId]);
 
   const handleUpdloadImage = async () => {
     try {
@@ -87,10 +64,6 @@ const CreatePost = ({ postId = null }) => {
       let urlApi = '/api/post/create';
       let method = 'POST';
       if(!currentUser.isAdmin) return;
-      if (postId) {
-        urlApi = `/api/post/updatepost/${formData._id}/${currentUser._id}`;
-        method = 'PUT'
-      }
       const res = await fetch(
         urlApi,
         {
@@ -129,13 +102,11 @@ const CreatePost = ({ postId = null }) => {
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
             }
-            value={formData && formData.title ? formData.title : ''}
           />
           <Select
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
             }
-            value={formData && formData.category ? formData.category : ''}
           >
             <option value='uncategorized'>Select a category</option>
             <option value='javascript'>JavaScript</option>
@@ -185,7 +156,6 @@ const CreatePost = ({ postId = null }) => {
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}
-          value={formData && formData.content ? formData.content : ''}
         />
         <Button type='submit' gradientDuoTone='purpleToPink'>
           Publish

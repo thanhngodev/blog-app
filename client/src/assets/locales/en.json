@@ -56,6 +56,11 @@
     "HAVE_ACCOUNT": "Have an account?",
     "YOUR_USERNAME": "Your username",
     "YOUR_EMAIL": "Your email",
-    "YOUR_PASSWORD": "Your password"
-
+    "YOUR_PASSWORD": "Your password",
+    "DATE_UPDATE": "Date updated",
+    "COMMENT_CONTENT": "Comment content",
+    "NUMBER_OF_LIKES": "Number of likes",
+    "POST_ID": "PostId",
+    "USER_ID": "UserId",
+    "NO_COMMENTS_DASH": "You have no comments yet!"
 }

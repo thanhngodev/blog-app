@@ -9,6 +9,7 @@ import {
 import { Button, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import TotalCard from "./TotalCard";
 
 const DashboardComp = () => {
   const [users, setUsers] = useState([]);
@@ -77,61 +78,41 @@ const DashboardComp = () => {
   return (
     <div className="p-3 md:mx-auto">
       <div className="flex-wrap flex gap-4 justify-center">
-        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
-          <div className="flex justify-between">
-            <div className="">
-              <h3 className="text-gray-500 text-md uppercase">{t("TOTAL_USERS")}</h3>
-              <p className="text-2xl">{totalUsers}</p>
-            </div>
+        <TotalCard
+          total={{
+            label: t("TOTAL_USERS"),
+            value: totalUsers,
+          }}
+          lastMonth={lastMonthUsers}
+          icon={
             <HiOutlineUserGroup className="bg-teal-600  text-white rounded-full text-5xl p-3 shadow-lg" />
-          </div>
-          <div className="flex  gap-2 text-sm">
-            <span className="text-green-500 flex items-center">
-              <HiArrowNarrowUp />
-              {lastMonthUsers}
-            </span>
-            <div className="text-gray-500">{t("LAST_MONTH")}</div>
-          </div>
-        </div>
-        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
-          <div className="flex justify-between">
-            <div className="">
-              <h3 className="text-gray-500 text-md uppercase">
-                {t("TOTAL_COMMENTS")}
-              </h3>
-              <p className="text-2xl">{totalComments}</p>
-            </div>
+          }
+        />
+        <TotalCard
+          total={{
+            label: t("TOTAL_COMMENTS"),
+            value: totalComments,
+          }}
+          lastMonth={lastMonthComments}
+          icon={
             <HiAnnotation className="bg-indigo-600  text-white rounded-full text-5xl p-3 shadow-lg" />
-          </div>
-          <div className="flex  gap-2 text-sm">
-            <span className="text-green-500 flex items-center">
-              <HiArrowNarrowUp />
-              {lastMonthComments}
-            </span>
-            <div className="text-gray-500">{t("LAST_MONTH")}</div>
-          </div>
-        </div>
-        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
-          <div className="flex justify-between">
-            <div className="">
-              <h3 className="text-gray-500 text-md uppercase">{t("TOTAL_POSTS")}</h3>
-              <p className="text-2xl">{totalPosts}</p>
-            </div>
+          }
+        />
+        <TotalCard
+          total={{
+            label: t("TOTAL_POSTS"),
+            value: totalPosts,
+          }}
+          lastMonth={lastMonthPosts}
+          icon={
             <HiDocumentText className="bg-lime-600  text-white rounded-full text-5xl p-3 shadow-lg" />
-          </div>
-          <div className="flex  gap-2 text-sm">
-            <span className="text-green-500 flex items-center">
-              <HiArrowNarrowUp />
-              {lastMonthPosts}
-            </span>
-            <div className="text-gray-500">{t("LAST_MONTH")}</div>
-          </div>
-        </div>
+          }
+        />
       </div>
       <div className="flex flex-wrap gap-4 py-3 mx-auto justify-center">
         <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
           <div className="flex justify-between  p-3 text-sm font-semibold">
-            <h1 className="text-center p-2">{t('RECENT_USERS')}</h1>
+            <h1 className="text-center p-2">{t("RECENT_USERS")}</h1>
             <Link to={"/dashboard?tab=users"}>
               <Button outline gradientDuoTone="purpleToPink">
                 {t("SEE_ALL")}
@@ -140,8 +121,8 @@ const DashboardComp = () => {
           </div>
           <Table hoverable>
             <Table.Head>
-              <Table.HeadCell>{t('USER_IMAGE')}</Table.HeadCell>
-              <Table.HeadCell>{t('USERNAME')}</Table.HeadCell>
+              <Table.HeadCell>{t("USER_IMAGE")}</Table.HeadCell>
+              <Table.HeadCell>{t("USERNAME")}</Table.HeadCell>
             </Table.Head>
             {users &&
               users.map((user) => (
@@ -162,7 +143,7 @@ const DashboardComp = () => {
         </div>
         <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
           <div className="flex justify-between  p-3 text-sm font-semibold">
-            <h1 className="text-center p-2">{t('RECENT_COMMENTS')}</h1>
+            <h1 className="text-center p-2">{t("RECENT_COMMENTS")}</h1>
             <Link to={"/dashboard?tab=comments"}>
               <Button outline gradientDuoTone="purpleToPink">
                 {t("SEE_ALL")}
@@ -171,8 +152,8 @@ const DashboardComp = () => {
           </div>
           <Table hoverable>
             <Table.Head>
-              <Table.HeadCell>{t('COMMENT_CONTENT')}</Table.HeadCell>
-              <Table.HeadCell>{t('LIKES')}</Table.HeadCell>
+              <Table.HeadCell>{t("COMMENT_CONTENT")}</Table.HeadCell>
+              <Table.HeadCell>{t("LIKES")}</Table.HeadCell>
             </Table.Head>
             {comments &&
               comments.map((comment) => (
@@ -189,7 +170,7 @@ const DashboardComp = () => {
         </div>
         <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
           <div className="flex justify-between  p-3 text-sm font-semibold">
-            <h1 className="text-center p-2">{t('RECENT_POSTS')}</h1>
+            <h1 className="text-center p-2">{t("RECENT_POSTS")}</h1>
             <Link to={"/dashboard?tab=posts"}>
               <Button outline gradientDuoTone="purpleToPink">
                 {t("SEE_ALL")}
@@ -198,9 +179,9 @@ const DashboardComp = () => {
           </div>
           <Table hoverable>
             <Table.Head>
-              <Table.HeadCell>{t('POST_IMAGE')}</Table.HeadCell>
-              <Table.HeadCell>{t('POST_TITLE')}</Table.HeadCell>
-              <Table.HeadCell>{t('CATEGORY')}</Table.HeadCell>
+              <Table.HeadCell>{t("POST_IMAGE")}</Table.HeadCell>
+              <Table.HeadCell>{t("POST_TITLE")}</Table.HeadCell>
+              <Table.HeadCell>{t("CATEGORY")}</Table.HeadCell>
             </Table.Head>
             {posts &&
               posts.map((post) => (

@@ -56,6 +56,11 @@
     "HAVE_ACCOUNT": "Có tài khoản?",
     "YOUR_USERNAME": "Tên người dùng của bạn",
     "YOUR_EMAIL": "Email của bạn",
-    "YOUR_PASSWORD": "Mật khẩu của bạn"
+    "YOUR_PASSWORD": "Mật khẩu của bạn",
+    "DATE_UPDATE": "Ngày",
+    "COMMENT_CONTENT": "Nội dung",
+    "NUMBER_OF_LIKES": "Lượt thích",
+    "POST_ID": "ID bài viết",
+    "USER_ID": "ID người dùng"
 }
 

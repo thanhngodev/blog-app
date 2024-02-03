@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { FaCheck, FaTimes } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const DashUsers = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -10,6 +11,8 @@ const DashUsers = () => {
   const [showMore, setShowMore] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [userIdToDelete, setUserIdToDelete] = useState('');
+  const { t } = useTranslation();
+
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -70,12 +73,12 @@ const DashUsers = () => {
           <>
             <Table hoverable striped className='shadow-md'>
               <Table.Head>
-                <Table.HeadCell>Date created</Table.HeadCell>
-                <Table.HeadCell>User image</Table.HeadCell>
-                <Table.HeadCell>Username</Table.HeadCell>
+                <Table.HeadCell>{t('DATE_CREATED')}</Table.HeadCell>
+                <Table.HeadCell>Avatar</Table.HeadCell>
+                <Table.HeadCell>{t('USERNAME')}</Table.HeadCell>
                 <Table.HeadCell>Email</Table.HeadCell>
                 <Table.HeadCell>Admin</Table.HeadCell>
-                <Table.HeadCell>Delete</Table.HeadCell>
+                <Table.HeadCell>{t('DELETE')}</Table.HeadCell>
               </Table.Head>
               <Table.Body className='divide-y'>
                 {
@@ -108,7 +111,7 @@ const DashUsers = () => {
                           }}
                           className='font-medium text-red-500 hover:underline cursor-pointer'
                         >
-                          Delete
+                          {t('DELETE')}
                         </span>
                       </Table.Cell>
                     </Table.Row>
@@ -122,14 +125,14 @@ const DashUsers = () => {
                   onClick={handleShowMore}
                   className='w-full text-teal-500 self-center text-sm py-7'
                 >
-                  Show more
+                   {t('SHOW_MORE')}
                 </button>
               )
             }
           </>
         ) : (
           <>
-            <p>You have no users yet!</p>
+            <p>{t('NO_USERS')}</p>
           </>
         )
       }
@@ -144,14 +147,14 @@ const DashUsers = () => {
           <div className='text-center'>
             <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
             <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete this user?
+              {t('DELETE_THIS_USER')}
             </h3>
             <div className='flex justify-center gap-4'>
               <Button color='failure' onClick={handleDeleteUser}>
-                Yes, I'm sure
+              {t('CONFIRM_YES')}
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
+              {t('CONFIRM_NO')}
               </Button>
             </div>
           </div>

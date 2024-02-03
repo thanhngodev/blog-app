@@ -1,15 +1,17 @@
+import { Button, Textarea } from 'flowbite-react';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaThumbsUp } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { Button, Textarea } from 'flowbite-react';
-import { set } from 'mongoose';
 
 const Comment = ({ comment, onLike, onEdit, onDelete }) => {
   const [user, setUser] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const { currentUser } = useSelector((state) => state.user);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getUser = async () => {
@@ -84,7 +86,7 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                   gradientDuoTone='purpleToBlue'
                   onClick={handleSave}
                 >
-                  Save
+                  {t('SAVE')}
                 </Button>
                 <Button
                   type='button'
@@ -93,7 +95,7 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                   outline
                   onClick={() => setIsEditing(false)}
                 >
-                  Cancel
+                  {t('CANCEL')}
                 </Button>
               </div>
             </>
@@ -125,14 +127,14 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
                         onClick={handleEdit}
                         className='text-gray-400 hover:text-blue-500'
                       >
-                        Edit
+                        {t('EDIT')}
                       </button>
                       <button
                         type='button'
                         onClick={() => onDelete(comment._id)}
                         className='text-gray-400 hover:text-red-500'
                       >
-                        Delete
+                        {t('DELETE')}
                       </button>
 
                     </>

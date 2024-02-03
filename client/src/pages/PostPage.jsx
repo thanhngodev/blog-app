@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import CallToAction from '../components/CallToAction';
 import CommentSection from '../components/CommentSection';
 import PostCard from '../components/PostCard';
+import { useTranslation } from 'react-i18next';
 
 const PostPage = () => {
   const { postSlug } = useParams();
@@ -12,6 +13,7 @@ const PostPage = () => {
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
   const [recentPosts, setRecentPosts] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -73,11 +75,11 @@ const PostPage = () => {
         dangerouslySetInnerHTML={{ __html: post && post.content }}
       ></div>
       <div className='max-w-4xl mx-auto w-full'>
-        <CallToAction />
+        {/* <CallToAction /> */}
       </div>
       <CommentSection postId={post._id} />
       <div className='flex flex-col justify-center items-center mb-5'>
-        <h1 className='text-xl mt-5'>Recent articles</h1>
+        <h1 className='text-xl mt-5'>{t('RECENT_ARTICLES')}</h1>
         <div className='flex flex-wrap gap-5 mt-5 justify-center'>
           {recentPosts &&
             recentPosts.map((post) => <PostCard key={post._id} post={post} />)}

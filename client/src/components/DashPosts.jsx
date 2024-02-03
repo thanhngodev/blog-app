@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { set } from 'mongoose';
+import { useTranslation } from 'react-i18next';
 
 const DashPosts = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -11,6 +12,7 @@ const DashPosts = () => {
   const [showMore, setShowMore] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [postIdToDelete, setPostIdToDelete] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -71,13 +73,13 @@ const DashPosts = () => {
           <>
             <Table hoverable striped className='shadow-md '>
               <Table.Head>
-                <Table.HeadCell>Date updated</Table.HeadCell>
-                <Table.HeadCell>Post image</Table.HeadCell>
-                <Table.HeadCell>Post title</Table.HeadCell>
-                <Table.HeadCell>Category</Table.HeadCell>
-                <Table.HeadCell>Delete</Table.HeadCell>
+                <Table.HeadCell>{t('DATE_UPDATED')}</Table.HeadCell>
+                <Table.HeadCell>{t('POST_IMAGE')}</Table.HeadCell>
+                <Table.HeadCell>{t('POST_TITLE')}</Table.HeadCell>
+                <Table.HeadCell>{t('CATEGORY')}</Table.HeadCell>
+                <Table.HeadCell>{t('DELETE')}</Table.HeadCell>
                 <Table.HeadCell>
-                  <span>Edit</span>
+                  <span>{t('EDIT')}</span>
                 </Table.HeadCell>
               </Table.Head>
               <Table.Body className='divide-y'>
@@ -113,7 +115,7 @@ const DashPosts = () => {
                           }}
                           className='font-medium text-red-500 hover:underline cursor-pointer'
                         >
-                          Delete
+                          {t('DELETE')}
                         </span>
                       </Table.Cell>
                       <Table.Cell>
@@ -121,7 +123,7 @@ const DashPosts = () => {
                           className='text-teal-500 hover:underline'
                           to={`/update-post/${post._id}`}
                         >
-                          <span>Edit</span>
+                          <span>{t('EDIT')}</span>
                         </Link>
                       </Table.Cell>
                     </Table.Row>
@@ -134,13 +136,13 @@ const DashPosts = () => {
                 onClick={handleShowMore}
                 className='w-full text-teal-500 self-center text-sm py-7'
               >
-                Show more
+                {t('SHOW_MORE')}
               </button>
             )}
           </>
         ) : (
           <>
-            <h1>You have no posts yet!</h1>
+            <h1>{t('NO_POSTS')}</h1>
           </>
         )
       }
@@ -156,14 +158,14 @@ const DashPosts = () => {
           <div className='text-center'>
             <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
             <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete this post?
+              {t('DELETE_THIS_POST')}
             </h3>
             <div className='flex justify-center gap-4'>
               <Button color='failure' onClick={handleDeletePost}>
-                Yes, I'm sure
+                {t('CONFIRM_YES')}
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
+                {t('CONFIRM_NO')}
               </Button>
             </div>
           </div>

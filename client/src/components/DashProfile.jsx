@@ -22,6 +22,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const DashProfile = () => {
   const { currentUser, error, loading } = useSelector((state) => state.user);
@@ -34,6 +35,9 @@ const DashProfile = () => {
   const [updateUserError, setUpdateUserError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({});
+
+  const { t } = useTranslation();
+
 
   const filePickerRef = useRef();
   const dispatch = useDispatch();
@@ -161,7 +165,7 @@ const DashProfile = () => {
 
   return (
     <div className='max-w-lg mx-auto p-3 w-full'>
-      <h1 className='my-7 text-center font-semibold text-3xl'>Profile</h1>
+      <h1 className='my-7 text-center font-semibold text-3xl'>{t('PROFILE')}</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='file'
@@ -209,7 +213,7 @@ const DashProfile = () => {
         <TextInput
           type='text'
           id='username'
-          placeholder='username'
+          placeholder={t('USERNAME')}
           defaultValue={currentUser.username}
           onChange={handleChange}
         />
@@ -223,7 +227,7 @@ const DashProfile = () => {
         <TextInput
           type='password'
           id='password'
-          placeholder='password'
+          placeholder={t('PASSWORD')}
           onChange={handleChange}
         />
         <Button
@@ -232,7 +236,7 @@ const DashProfile = () => {
           outline
           disabled={loading || imageFileUploading}
         >
-          {loading ? 'Loading...' : 'Update'}
+          {t(loading ? 'LOADING...' : 'UPDATE')}
         </Button>
         {currentUser.isAdmin && (
           <Link to={'/create-post'}>
@@ -241,17 +245,17 @@ const DashProfile = () => {
               gradientDuoTone='purpleToPink'
               className='w-full'
             >
-              Create a post
+              {t("CREATE_POST")}
             </Button>
           </Link>
         )}
       </form>
       <div className='text-red-500 flex justify-between mt-5'>
         <span onClick={() => setShowModal(true)} className='cursor-pointer'>
-          Delete Account
+          {t("DELETE_ACCOUNT")}
         </span>
         <span onClick={handleSignout} className='cursor-pointer'>
-          Sign Out
+          {t("SIGN_OUT")}
         </span>
       </div>
       {updateUserSuccess && (
@@ -282,14 +286,14 @@ const DashProfile = () => {
           <div className='text-center'>
             <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
             <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete your account?
+              {t('DELETE_YOUR_ACCOUNT')}
             </h3>
             <div className='flex justify-center gap-4'>
               <Button color='failure' onClick={handleDeleteUser}>
-                Yes, I'm sure
+                {t('CONFIRM_YES')}
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
+                {t('CONFIRM_NO')}
               </Button>
             </div>
           </div>

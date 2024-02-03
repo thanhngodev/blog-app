@@ -64,7 +64,7 @@ const Header = () => {
       <form onSubmit={handleSubmit}>
         <TextInput
           type='text'
-          placeholder='Search...'
+          placeholder={t('SEARCH') + '...'}
           rightIcon={AiOutlineSearch}
           className='hidden lg:inline'
           value={searchTerm}
@@ -116,15 +116,15 @@ const Header = () => {
                 </span>
               </Dropdown.Header>
               <Link to={'/dashboard?tab=profile'}>
-                <Dropdown.Item>Profile</Dropdown.Item>
+                <Dropdown.Item>{t('PROFILE')}</Dropdown.Item>
               </Link>
               <Dropdown.Divider />
-              <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+              <Dropdown.Item onClick={handleSignout}>{t('SIGN_OUT')}</Dropdown.Item>
             </Dropdown>
           ) : (
             <Link to='/sign-in'>
               <Button gradientDuoTone='purpleToBlue' outline>
-                Sign In
+                {t('SIGN_IN')}
               </Button>
             </Link>
           )

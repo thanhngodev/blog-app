@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Comment from './Comment';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { useTranslation } from 'react-i18next';
 
 const CommentSection = ({ postId }) => {
   const { currentUser } = useSelector((state) => state.user);
@@ -13,6 +14,7 @@ const CommentSection = ({ postId }) => {
   const [showModal, setShowModal] = useState(false);
   const [commentToDelete, setCommentToDelete] = useState(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getComments = async () => {
@@ -119,7 +121,7 @@ const CommentSection = ({ postId }) => {
         currentUser ? (
           <>
             <div className='flex items-center gap-1 my-5 text-gray-500 text-sm'>
-              <p>Signed in as:</p>
+              <p>{t('SIGNED_IN_AS')}:</p>
               <img
                 className='h-5 w-5 object-cover rounded-full'
                 src={currentUser.profilePicture}
@@ -138,7 +140,7 @@ const CommentSection = ({ postId }) => {
               className='border border-teal-500 rounded-md p-3'
             >
               <Textarea
-                placeholder='Add a comment...'
+                placeholder={t('ADD_COMMENT_PLACE') + '...'}
                 rows='3'
                 maxLength='200'
                 onChange={(e) => setComment(e.target.value)}
@@ -146,10 +148,10 @@ const CommentSection = ({ postId }) => {
               />
               <div className='flex justify-between items-center mt-5'>
                 <p className='text-gray-500 text-xs'>
-                  {200 - comment.length} characters remaining
+                  {200 - comment.length + " " + t('CHARACTERS_REMAINING')}
                 </p>
                 <Button outline gradientDuoTone='purpleToBlue' type='submit'>
-                  Submit
+                  {t('SUBMIT')}
                 </Button>
               </div>
               {commentError && (
@@ -161,12 +163,12 @@ const CommentSection = ({ postId }) => {
             {
               comments.length === 0 ? (
                 <>
-                  <p className='text-sm my-5'>No comments yet!</p>
+                  <p className='text-sm my-5'>{t('NO_COMMENTS')}</p>
                 </>
               ) : (
                 <>
                   <div className='text-sm my-5 flex items-center gap-1'>
-                    <p>Comments</p>
+                    <p>{t('COMMENTS')}</p>
                     <div className='border border-gray-400 py-1 px-2 rounded-sm'>
                       <p>{comments.length}</p>
                     </div>
@@ -218,17 +220,17 @@ const CommentSection = ({ postId }) => {
           <div className='text-center'>
             <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
             <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete this comment?
+              {t('DELETE_THIS_COMMENT')}
             </h3>
             <div className='flex justify-center gap-4'>
               <Button
                 color='failure'
                 onClick={() => handleDelete(commentToDelete)}
               >
-                Yes, I'm sure
+                {t('CONFIRM_YES')}
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
+                {t('CONFIRM_NO')}
               </Button>
             </div>
           </div>

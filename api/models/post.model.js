@@ -36,3 +36,7 @@ const postSchema = new mongoose.Schema(
 const Post = mongoose.model('Post', postSchema);
 
 export default Post;
+
+
+// const { t } = useTranslation();
+// import { useTranslation } from 'react-i18next';

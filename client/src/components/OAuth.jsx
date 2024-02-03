@@ -5,11 +5,13 @@ import { app } from '../firebase';
 import { useDispatch } from 'react-redux';
 import { signInSuccess } from '../redux/user/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const OAuth = () => {
     const auth = getAuth(app);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const handleGoogleClick = async () => {
         const provider = new GoogleAuthProvider();
@@ -35,7 +37,7 @@ const OAuth = () => {
     return (
         <Button type='button' gradientDuoTone='pinkToOrange' outline onClick={handleGoogleClick}>
             <AiFillGoogleCircle className='w-6 h-6 mr-2' />
-            Continue with Google
+            {t('CONTINUE_WITH_GOOGLE')}
         </Button>
     )
 }

@@ -12,41 +12,44 @@ import { Link, useLocation } from 'react-router-dom';
 import { signoutSuccess } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const DashSidebar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
 
+const { t } = useTranslation();
+
   const [tab, setTab] = useState('');
 
   const tabs = [
     {
-      label: "Dashboard",
+      label: "DASHBOARD",
       tab: "dash",
       icon: HiChartPie,
       isAdmin: true
     },
     {
-      label: "Profile",
+      label: "PROFILE",
       tab: "profile",
       icon: HiUser,
       isAdmin: false
     },
     {
-      label: "Posts",
+      label: "POSTS",
       tab: "posts",
       icon: HiDocumentText,
       isAdmin: true
     },
     {
-      label: "Users",
+      label: "USERS",
       tab: "users",
       icon: HiOutlineUserGroup,
       isAdmin: true
     },
     {
-      label: "Comments",
+      label: "COMMENTS",
       tab: "comments",
       icon: HiAnnotation,
       isAdmin: true
@@ -96,7 +99,7 @@ const DashSidebar = () => {
                       icon={tabItem.icon}
                       as='div'
                     >
-                      {tabItem.label}
+                      {t(tabItem.label)}
                     </Sidebar.Item>
                   </Link>
                 );
@@ -110,7 +113,7 @@ const DashSidebar = () => {
             className='cursor-pointer'
             onClick={handleSignout}
           >
-            Sign Out
+            {t('SIGN_OUT')}
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>

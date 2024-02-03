@@ -62,5 +62,15 @@
     "NUMBER_OF_LIKES": "Number of likes",
     "POST_ID": "PostId",
     "USER_ID": "UserId",
-    "NO_COMMENTS_DASH": "You have no comments yet!"
+    "NO_COMMENTS_DASH": "You have no comments yet!",
+    "LAST_MONTH": "Last month",
+    "SEE_ALL": "See all",
+    "TOTAL_USERS": "Total Users",
+    "TOTAL_COMMENTS": "Total Comments",
+    "TOTAL_POSTS": "Total Posts",
+    "USER_IMAGE": "User image",
+    "RECENT_USERS": "Recent users",
+    "RECENT_COMMENTS": "Recent comments",
+    "LIKES": "Likes",
+    "RECENT_POSTS": "Recent posts"
 }

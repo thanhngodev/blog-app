@@ -61,6 +61,17 @@
     "COMMENT_CONTENT": "Nội dung",
     "NUMBER_OF_LIKES": "Lượt thích",
     "POST_ID": "ID bài viết",
-    "USER_ID": "ID người dùng"
+    "USER_ID": "ID người dùng",
+    "NO_COMMENTS_DASH": "Bạn chưa có nhận xét nào!",
+    "LAST_MONTH": "Tháng trước",
+    "SEE_ALL": "Xem tất cả",
+    "TOTAL_USERS": "Tổng số người dùng",
+    "TOTAL_COMMENTS": "Tổng số nhận xét",
+    "TOTAL_POSTS": "Tổng số bài viết",
+    "USER_IMAGE": "Hình ảnh người dùng",
+    "RECENT_USERS": "Người dùng gần đây",
+    "RECENT_COMMENTS": "Nhận xét gần đây",
+    "LIKES": "Thích",
+    "RECENT_POSTS": "Bài đăng gần đây"
 }
 

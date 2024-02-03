@@ -1,7 +1,8 @@
 import { Footer } from 'flowbite-react';
-import { Link } from 'react-router-dom';
-import { BsFacebook, BsInstagram, BsTwitter, BsGithub, BsDribbble } from 'react-icons/bs';
 import { useTranslation } from 'react-i18next';
+import { BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
+import { AiFillContacts } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 const FooterCom = () => {
   const { t } = useTranslation();
@@ -71,9 +72,9 @@ const FooterCom = () => {
             year={new Date().getFullYear()}
           />
           <div className="flex gap-6 sm:mt-0 mt-4 sm:justify-center">
-            <Footer.Icon href='#' icon={BsFacebook} />
-            <Footer.Icon href='#' icon={BsInstagram} />
-            <Footer.Icon href='https://github.com/sahandghavidel' icon={BsGithub} />
+            <Footer.Icon href='https://www.facebook.com/ngotanthanhdev/' icon={BsFacebook} />
+            <Footer.Icon href='https://github.com/thanhngodev/' icon={BsGithub} />
+            <Footer.Icon href='https://thanhngodev.vercel.app/' icon={AiFillContacts} />
           </div>
         </div>
       </div>

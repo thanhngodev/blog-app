@@ -76,5 +76,23 @@
   "WELCOME_DESC": "Here you'll find a variety of articles and tutorials on topics such as web development, software engineering, and programming languages.",
   "WELCOME_TO": "Welcome to my Blog",
   "VIEW_ALL_POSTS": "View all posts",
-  "READ_ARTICLE": "Read article"
+  "READ_ARTICLE": "Read article",
+  "SEARCH_TERM": "Search Term",
+  "SORT": "Sort",
+  "LATEST": "Latest",
+  "OLDEST": "Oldest",
+  "ALL": "All",
+  "UNCATEGORIZED": "Uncategorized",
+  "APPLY_FILTERS": "Apply Filters",
+  "POSTS_RESULTS": "Posts results",
+  "PROJECT_DESC": "Build fun and engaging projects while learning HTML, CSS, and JavaScript!",
+  "POJECTS": "Pojects",
+  "LEARN_MORE_ABOUT_JAVASCRIPT": "Want to learn more about JavaScript?",
+  "100_JAVASCRIPT_PROJECTS_DESC": "Checkout these resources with 100 JavaScript Projects",
+  "100_JAVASCRIPT_PROJECTS": "100 JavaScript Projects",
+
+  "ABOUT_T-BLOG": "About T-Blog",
+  "WELCOME_TO_T-BLOG": "Welcome to T-Blog! This blog was created by Thanh Ngo Dev as a personal project to share his thoughts and ideas with the world. Thanh Ngo Dev is a passionate developer who loves to write about technology, coding, and everything in between.",
+  "WELCOME_TO_T-BLOG_1": "On this blog, you'll find weekly articles and tutorials on topics such as web development, software engineering, and programming languages. Thanh Ngo Dev is always learning and exploring new technologies, so be sure to check back often for new content!",
+  "WELCOME_TO_T-BLOG_2": "We encourage you to leave comments on our posts and engage with other readers. You can like other people's comments and reply to them as well. We believe that a community of learners can help each other grow and improve."
 }
